@@ -54,28 +54,31 @@ private struct Cart: View {
                             Text(item.totalPrice, format: .currency(code: "USD"))
                                 .foregroundColor(.button)
                                 .fontWeight(.bold)
+                        } .swipeActions(edge: .trailing) {
+                            
+                            Button(role: .destructive) {
+                                withAnimation {
+                                    
+                                    viewModel.deleteItem(for: item )
+                                }
+                                
+                            } label: {
+                                
+                                Label("Delete", systemImage: "trash")
+                                
+                            }
                         }
                         
                         
                         Spacer()
                         ChangeCountButton(cartItem: item)
                         
-                    } .swipeActions(edge: .trailing) {
-                        
-                        Button(role: .destructive) {
-                            withAnimation {
-                                
-                                viewModel.deleteItem(for: item)
-                            }
-                            
-                        } label: {
-                            
-                            Label("Delete", systemImage: "trash")
-                            
-                        }
                     }
                 }
-            }.listStyle(.plain)
+                
+            }
+            .listStyle(.plain)
+            
                     
                 Spacer()
                 HStack(spacing: 0) {
@@ -120,7 +123,7 @@ private struct ChangeCountButton: View {
                     
                 }
                 
-            }
+            } .buttonStyle(.plain)
             
             Text(String(cartItem.count))
                 .foregroundColor(.black)
@@ -138,7 +141,7 @@ private struct ChangeCountButton: View {
                     Text("+")
                     
                     
-                }
+                } .buttonStyle(.plain)
                 
             }
         } .foregroundColor(.white)

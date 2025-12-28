@@ -91,7 +91,7 @@ class DetailScreenViewModel {
             
             cart[index].count += 1
             
-            cart[index].totalPrice = Double(cart[index].count) * Double(item.unitPrice)
+            cart[index].totalPrice = Double(cart[index].count) * Double(cart[index].unitPrice)
             
             
             
